@@ -8,11 +8,20 @@ r=redis.Redis(
 )
 
 
-#set
+""" #set
 r.set("user_token", "xyzanc123def456")
 #get
 token = r.get("user_token")
 
 print(token)
 #delete
-r.delete("user_token")
+r.delete("user_token") """
+
+
+r.set("otp", "987456")
+
+r.expire("otp", 300)
+
+remaining_time = r.ttl("otp")
+
+print(remaining_time)
